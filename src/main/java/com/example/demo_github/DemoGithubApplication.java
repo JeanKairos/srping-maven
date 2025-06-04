@@ -1,3 +1,6 @@
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 package com.example.demo_github;
 
 import org.springframework.boot.SpringApplication;
@@ -10,4 +13,12 @@ public class DemoGithubApplication {
 		SpringApplication.run(DemoGithubApplication.class, args);
 	}
 
+}
+
+@RestController
+class HelloWorldController {
+ @GetMapping("/")
+ public String sayHello() {
+ return "Hello, World!";
+ }
 }
