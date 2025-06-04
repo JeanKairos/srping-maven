@@ -1,13 +1,24 @@
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 package com.example.demo_github;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootTest
-class DemoGithubApplicationTests {
+@SpringBootApplication
+public class DemoGithubApplication {
 
-	@Test
-	void contextLoads() {
+	public static void main(String[] args) {
+		SpringApplication.run(DemoGithubApplication.class, args);
 	}
 
+}
+
+@RestController
+class HelloWorldController {
+ @GetMapping("/")
+ public String sayHello() {
+ return "Hello, World!";
+ }
 }
