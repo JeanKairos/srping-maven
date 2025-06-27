@@ -1,0 +1,24 @@
+image: maven:3.8.6-jdk-17
+
+stages:
+  - build
+  - sonar
+
+variables:
+  SONAR_HOST_URL: "http://192.168.174.140:9000"
+  SONAR_LOGIN: "sqp_2194ce8e267c24a0fece47735320c5cd30f407f3"
+
+build-job:
+  stage: build
+  script:
+    - mvn compile
+
+sonarqube-check:
+  stage: sonar
+  script:
+    - mvn clean verify sonar:sonar \
+        -Dsonar.projectKey=AppSpringboot \
+        -Dsonar.projectName='AppSpringboot' \
+        -Dsonar.host.url=$SONAR_HOST_URL \
+        -Dsonar.token=$SONAR_LOGIN
+
